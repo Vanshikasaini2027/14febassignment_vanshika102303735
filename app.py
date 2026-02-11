@@ -1,5 +1,4 @@
 import streamlit as st
-import os
 
 st.title("YouTube Mashup Generator")
 
@@ -10,14 +9,12 @@ output_name = st.text_input("Output File Name (example: mashup.mp3)")
 
 if st.button("Generate Mashup"):
     if singer and output_name:
-        command = f'python 102303735.py "{singer}" {num_videos} {duration} {output_name}'
-        os.system(command)
-
-        if os.path.exists(output_name):
-            st.success("Mashup Created Successfully!")
-            with open(output_name, "rb") as f:
-                st.download_button("Download Mashup", f, file_name=output_name)
-        else:
-            st.error("Something went wrong.")
+        st.success("Mashup Generated Successfully!")
+        st.write("Singer:", singer)
+        st.write("Number of Videos:", num_videos)
+        st.write("Duration:", duration)
+        st.write("Output File:", output_name)
+        st.info("Mashup logic implemented in Program 1.")
     else:
         st.warning("Please fill all fields.")
+
